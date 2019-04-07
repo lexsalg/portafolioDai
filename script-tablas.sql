@@ -13,7 +13,7 @@ CREATE TABLE Usuario (
 GO
 
 CREATE TABLE  Docente(
-idDocente INT NOT NULL IDENTITY PRIMARY KEY,
+IdDocente INT NOT NULL IDENTITY PRIMARY KEY,
 Nombre varchar(50),
 Apellidos varchar(50),
 Email varchar(30)
@@ -21,8 +21,9 @@ Email varchar(30)
 GO
 
 CREATE TABLE  Portafolio(
-idPortafolio INT NOT NULL IDENTITY PRIMARY KEY,
-idDocente INT NOT NULL,
+IdPortafolio INT NOT NULL IDENTITY PRIMARY KEY,
+IdDocente INT NOT NULL,
+Semestre varchar(50),
 NombreDocumento varchar(50),
 TipoDocumento varchar(50),
 Documento VARBINARY(max) NULL,

@@ -20,7 +20,7 @@ namespace Models
             this.Portafolio = new HashSet<Portafolio>();
         }
     
-        public int idDocente { get; set; }
+        public int IdDocente { get; set; }
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
         public string Email { get; set; }

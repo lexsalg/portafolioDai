@@ -4,22 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="portafolioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="portafolioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Docente">
           <Key>
-            <PropertyRef Name="idDocente" />
+            <PropertyRef Name="IdDocente" />
           </Key>
-          <Property Name="idDocente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDocente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="Apellidos" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="Portafolio">
           <Key>
-            <PropertyRef Name="idPortafolio" />
+            <PropertyRef Name="IdPortafolio" />
           </Key>
-          <Property Name="idPortafolio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idDocente" Type="int" Nullable="false" />
+          <Property Name="IdPortafolio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDocente" Type="int" Nullable="false" />
+          <Property Name="Semestre" Type="varchar" MaxLength="50" />
           <Property Name="NombreDocumento" Type="varchar" MaxLength="50" />
           <Property Name="TipoDocumento" Type="varchar" MaxLength="50" />
           <Property Name="Documento" Type="varbinary(max)" />
@@ -36,15 +37,15 @@
           <Property Name="Apellidos" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="30" />
         </EntityType>
-        <Association Name="FK__Portafoli__idDoc__3B75D760">
+        <Association Name="FK__Portafoli__IdDoc__4222D4EF">
           <End Role="Docente" Type="Self.Docente" Multiplicity="1" />
           <End Role="Portafolio" Type="Self.Portafolio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Docente">
-              <PropertyRef Name="idDocente" />
+              <PropertyRef Name="IdDocente" />
             </Principal>
             <Dependent Role="Portafolio">
-              <PropertyRef Name="idDocente" />
+              <PropertyRef Name="IdDocente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -52,35 +53,37 @@
           <EntitySet Name="Docente" EntityType="Self.Docente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Portafolio" EntityType="Self.Portafolio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Portafoli__idDoc__3B75D760" Association="Self.FK__Portafoli__idDoc__3B75D760">
+          <AssociationSet Name="FK__Portafoli__IdDoc__4222D4EF" Association="Self.FK__Portafoli__IdDoc__4222D4EF">
             <End Role="Docente" EntitySet="Docente" />
             <End Role="Portafolio" EntitySet="Portafolio" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="portafolioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Docente">
           <Key>
-            <PropertyRef Name="idDocente" />
+            <PropertyRef Name="IdDocente" />
           </Key>
-          <Property Name="idDocente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDocente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Portafolio" Relationship="Self.FK__Portafoli__idDoc__3B75D760" FromRole="Docente" ToRole="Portafolio" />
+          <NavigationProperty Name="Portafolio" Relationship="Self.FK__Portafoli__IdDoc__4222D4EF" FromRole="Docente" ToRole="Portafolio" />
         </EntityType>
         <EntityType Name="Portafolio">
           <Key>
-            <PropertyRef Name="idPortafolio" />
+            <PropertyRef Name="IdPortafolio" />
           </Key>
-          <Property Name="idPortafolio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idDocente" Type="Int32" Nullable="false" />
+          <Property Name="IdPortafolio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDocente" Type="Int32" Nullable="false" />
+          <Property Name="Semestre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NombreDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TipoDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Docente" Relationship="Self.FK__Portafoli__idDoc__3B75D760" FromRole="Portafolio" ToRole="Docente" />
+          <NavigationProperty Name="Docente" Relationship="Self.FK__Portafoli__IdDoc__4222D4EF" FromRole="Portafolio" ToRole="Docente" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -94,23 +97,23 @@
           <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="FK__Portafoli__idDoc__3B75D760">
+        <Association Name="FK__Portafoli__IdDoc__4222D4EF">
           <End Role="Docente" Type="Self.Docente" Multiplicity="1" />
           <End Role="Portafolio" Type="Self.Portafolio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Docente">
-              <PropertyRef Name="idDocente" />
+              <PropertyRef Name="IdDocente" />
             </Principal>
             <Dependent Role="Portafolio">
-              <PropertyRef Name="idDocente" />
+              <PropertyRef Name="IdDocente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="portafolioEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Docente" EntityType="Self.Docente" />
           <EntitySet Name="Portafolio" EntityType="Self.Portafolio" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
-          <AssociationSet Name="FK__Portafoli__idDoc__3B75D760" Association="Self.FK__Portafoli__idDoc__3B75D760">
+          <AssociationSet Name="FK__Portafoli__IdDoc__4222D4EF" Association="Self.FK__Portafoli__IdDoc__4222D4EF">
             <End Role="Docente" EntitySet="Docente" />
             <End Role="Portafolio" EntitySet="Portafolio" />
           </AssociationSet>
@@ -120,11 +123,11 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="portafolioModelStoreContainer" CdmEntityContainer="portafolioEntities">
+        <EntityContainerMapping StorageEntityContainer="portafolioModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Docente">
             <EntityTypeMapping TypeName="portafolioModel.Docente">
               <MappingFragment StoreEntitySet="Docente">
-                <ScalarProperty Name="idDocente" ColumnName="idDocente" />
+                <ScalarProperty Name="IdDocente" ColumnName="IdDocente" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -134,8 +137,9 @@
           <EntitySetMapping Name="Portafolio">
             <EntityTypeMapping TypeName="portafolioModel.Portafolio">
               <MappingFragment StoreEntitySet="Portafolio">
-                <ScalarProperty Name="idPortafolio" ColumnName="idPortafolio" />
-                <ScalarProperty Name="idDocente" ColumnName="idDocente" />
+                <ScalarProperty Name="IdPortafolio" ColumnName="IdPortafolio" />
+                <ScalarProperty Name="IdDocente" ColumnName="IdDocente" />
+                <ScalarProperty Name="Semestre" ColumnName="Semestre" />
                 <ScalarProperty Name="NombreDocumento" ColumnName="NombreDocumento" />
                 <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
                 <ScalarProperty Name="Documento" ColumnName="Documento" />

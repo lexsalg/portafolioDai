@@ -14,8 +14,9 @@ namespace Models
     
     public partial class Portafolio
     {
-        public int idPortafolio { get; set; }
-        public int idDocente { get; set; }
+        public int IdPortafolio { get; set; }
+        public int IdDocente { get; set; }
+        public string Semestre { get; set; }
         public string NombreDocumento { get; set; }
         public string TipoDocumento { get; set; }
         public byte[] Documento { get; set; }

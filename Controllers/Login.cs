@@ -14,7 +14,7 @@ namespace Controllers
         {
             try
             {
-                using (portafolioEntities db = new portafolioEntities())
+                using (PortafolioEntities db = new PortafolioEntities())
                 {
                     var query = from p in db.Usuario
                                 where p.NombreUsuario == nombreUsuario
@@ -30,11 +30,30 @@ namespace Controllers
             }
             catch (System.Exception ex)
             {
-
                 return ex.Message;
             }
+        }
 
+        public string rolUsuario(string nombreUsuario)
+        {
+            try
+            {
+                using (PortafolioEntities db = new PortafolioEntities())
+                {
+                    Usuario u = db.Usuario.Single(_u => _u.NombreUsuario == nombreUsuario);
 
+                    //var query= from p in db.Usuario
+                    //                      where p.NombreUsuario == nombreUsuario
+                    //                      select p;
+                    // string rolUsuario=query.Where(u=>u.NombreUsuario==nombreUsuario)
+                    // return rolUsuario;
+                    return u.Rol.ToString();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return ex.Message;
+            }
         }
     }
 }

@@ -13,9 +13,9 @@ namespace Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class portafolioEntities : DbContext
+    public partial class PortafolioEntities: DbContext
     {
-        public portafolioEntities()
+        public PortafolioEntities()
             : base("name=portafolioEntities")
         {
         }

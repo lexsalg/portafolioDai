@@ -31,7 +31,7 @@ namespace Presentacion
             {
                 Verificar = true;
                 this.Hide();
-                Inicio i = new Inicio();
+                InicioForm i = new InicioForm(txtUsuario.Text);
                 i.ShowDialog();
                 this.Visible = true;
                 limpiarDatos();
